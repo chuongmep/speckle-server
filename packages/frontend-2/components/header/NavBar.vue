@@ -1,73 +1,65 @@
 <template>
-  <Disclosure v-slot="{ open }" as="nav" class="bg-background shadow-sm">
+  <Disclosure
+    v-slot="{ open }"
+    as="nav"
+    class="bg-white/75 dark:bg-black/75 shadow-lg dark:shadow-slate-500/10 backdrop-blur-sm fixed w-full"
+  >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 justify-between">
+      <div class="flex h-14 justify-between">
         <div class="flex">
           <div class="flex flex-shrink-0 items-center">
             <HeaderLogoBlock minimal />
-          </div>
-          <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-            <a
-              v-for="item in navigation"
-              :key="item.name"
-              :href="item.href"
-              :class="[
-                item.current
-                  ? 'border-primary text-foreground'
-                  : 'border-transparent text-foreground-3 hover:text-foreground-2 hover:border-foreground-4',
-                'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
-              ]"
-              :aria-current="item.current ? 'page' : undefined"
-            >
-              {{ item.name }}
-            </a>
+            <div class="ml-2 h5 font-bold">Dashboard</div>
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
           <button
             type="button"
             class="rounded-full bg-background p-1 text-foreground-3 hover:text-foreground-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            @click="swapTheme()"
           >
             <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
+            <SunIcon v-if="darkMode" class="h-4 w-4" aria-hidden="true" />
+            <MoonIcon v-else class="h-4 w-4" aria-hidden="true" />
           </button>
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-4">
             <div>
               <MenuButton
-                class="flex rounded-full bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                class="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 <span class="sr-only">Open user menu</span>
                 <img class="h-8 w-8 rounded-full" :src="user.imageUrl" alt="" />
               </MenuButton>
             </div>
             <Transition
-              enter-active-class="transition ease-out duration-200"
-              enter-from-class="transform opacity-0 scale-95"
+              enter-active-class="transition ease-in-out duration-200"
+              enter-from-class="transform opacity-0 scale-90"
               enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75"
+              leave-active-class="transition ease-in-out  duration-75"
               leave-from-class="transform opacity-100 scale-100"
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-background py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right py-1 ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
-                <MenuItem
-                  v-for="item in userNavigation"
-                  :key="item.name"
-                  v-slot="{ active }"
+                <div
+                  class="shadow-md rounded-lg background-2 overflow-clip dark:shadow-slate-600/25"
                 >
-                  <a
-                    :href="item.href"
-                    :class="[
-                      active ? 'bg-background-2' : '',
-                      'block px-4 py-2 text-sm text-foreground-2'
-                    ]"
+                  <MenuItem
+                    v-for="item in userNavigation"
+                    :key="item.name"
+                    v-slot="{ active }"
                   >
-                    {{ item.name }}
-                  </a>
-                </MenuItem>
+                    <a
+                      :href="item.href"
+                      :class="[active ? 'background' : '', 'block px-4 py-2 text-sm']"
+                    >
+                      {{ item.name }}
+                    </a>
+                  </MenuItem>
+                </div>
               </MenuItems>
             </Transition>
           </Menu>
@@ -145,7 +137,15 @@ import {
   MenuItem,
   MenuItems
 } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  SunIcon,
+  MoonIcon
+} from '@heroicons/vue/24/solid'
+
+import { ref } from 'vue'
 
 const user = {
   name: 'Tom Cook',
@@ -164,4 +164,16 @@ const userNavigation = [
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#' }
 ]
+
+const darkMode = ref(false)
+
+const swapTheme = () => {
+  if (!darkMode.value) {
+    document.documentElement.classList.add('dark')
+    darkMode.value = true
+  } else {
+    document.documentElement.classList.remove('dark')
+    darkMode.value = false
+  }
+}
 </script>

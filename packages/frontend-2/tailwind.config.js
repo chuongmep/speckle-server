@@ -59,6 +59,10 @@ const typographyTheme = (theme, type) => ({
 
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 const config = {
+  darkMode: 'class',
+  variants: {
+    scale: ['responsive', 'hover', 'focus', 'active', 'group-hover']
+  },
   content: [
     `./components/**/*.{vue,js,ts}`,
     `./layouts/**/*.vue`,
@@ -73,21 +77,21 @@ const config = {
   theme: {
     extend: {
       colors: {
-        background: {
-          DEFAULT: 'var(--theme-color-background)',
-          2: 'var(--theme-color-background-2)',
-          3: 'var(--theme-color-background-3)'
-        },
-        foreground: {
-          DEFAULT: 'var(--theme-color-foreground)',
-          2: 'var(--theme-color-foreground-2)',
-          3: 'var(--theme-color-foreground-3)',
-          4: 'var(--theme-color-foreground-4)'
-        },
+        // background: {
+        //   DEFAULT: 'var(--theme-color-background)',
+        //   2: 'var(--theme-color-background-2)',
+        //   3: 'var(--theme-color-background-3)'
+        // },
+        // foreground: {
+        //   DEFAULT: 'var(--theme-color-foreground)',
+        //   2: 'var(--theme-color-foreground-2)',
+        //   3: 'var(--theme-color-foreground-3)',
+        //   4: 'var(--theme-color-foreground-4)'
+        // },
         primary: {
-          DEFAULT: colors.blue['600'],
-          darker: colors.blue['700'],
-          lighter: colors.blue['500']
+          DEFAULT: colors.blue['500'],
+          darker: colors.blue['600'],
+          lighter: colors.blue['400']
         },
         link: {
           DEFAULT: 'var(--theme-color-link)',
@@ -144,38 +148,38 @@ const config = {
       })
     },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif']
+      sans: ['Inter', 'sans-serif']
     },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: colors.black,
-      white: colors.white,
-      gray: colors.gray,
-      blue: colors.blue
-    },
-    spacing: {
-      0: '0px',
-      1: '0.25rem',
-      2: '0.5rem',
-      4: '1rem',
-      6: '1.5rem',
-      8: '2rem',
-      12: '3rem',
-      16: '4rem',
-      20: '5rem',
-      24: '6rem',
-      32: '8rem',
-      40: '10rem',
-      48: '12rem',
-      56: '14rem',
-      64: '16rem',
-      96: '24rem',
-      128: '32rem'
-    },
+    // colors: {
+    //   transparent: 'transparent',
+    //   current: 'currentColor',
+    //   black: colors.black,
+    //   white: colors.white,
+    //   gray: colors.gray,
+    //   blue: colors.blue
+    // },
+    // spacing: {
+    //   0: '0px',
+    //   1: '0.25rem',
+    //   2: '0.5rem',
+    //   4: '1rem',
+    //   6: '1.5rem',
+    //   8: '2rem',
+    //   12: '3rem',
+    //   16: '4rem',
+    //   20: '5rem',
+    //   24: '6rem',
+    //   32: '8rem',
+    //   40: '10rem',
+    //   48: '12rem',
+    //   56: '14rem',
+    //   64: '16rem',
+    //   96: '24rem',
+    //   128: '32rem'
+    // },
     configViewer: {
       fonts:
-        'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap'
+        'https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
     }
   },
   plugins: [

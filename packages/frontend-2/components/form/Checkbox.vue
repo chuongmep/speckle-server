@@ -108,7 +108,7 @@ const props = defineProps({
    */
   value: {
     type: String as PropType<string>,
-    required: true
+    default: undefined
   }
 })
 

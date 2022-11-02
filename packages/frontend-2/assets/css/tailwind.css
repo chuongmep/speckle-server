@@ -1,8 +1,6 @@
 /* stylelint-disable selector-id-pattern */
 
-/** Main sans-serif font TODO: preload/prefetch */
-@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap';
-@import './tailwind-setup/semantic-colors.css';
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;800&display=swap';
 
 @tailwind base;
 @tailwind components;
@@ -17,23 +15,23 @@
    * Common text styles
    */
   .h1 {
-    @apply text-5xl leading-normal font-bold;
+    @apply text-5xl leading-normal;
   }
 
   .h2 {
-    @apply text-4xl leading-normal font-bold;
+    @apply text-4xl leading-normal;
   }
 
   .h3 {
-    @apply text-3xl leading-normal font-bold;
+    @apply text-3xl leading-normal;
   }
 
   .h4 {
-    @apply text-2xl leading-normal font-bold;
+    @apply text-2xl leading-normal;
   }
 
   .h5 {
-    @apply text-xl leading-normal font-bold;
+    @apply text-xl leading-normal;
   }
 
   .normal {
@@ -51,15 +49,22 @@
   .caption {
     @apply text-xs;
   }
-}
 
-/**
- * Ensuring ring offset color always defaults to bg color
- */
-*,
-[type='checkbox']:focus,
-[type='radio']:focus {
-  @apply ring-offset-background;
+  .background {
+    @apply bg-slate-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300;
+  }
+
+  .background-2 {
+    @apply bg-white dark:bg-black text-neutral-600 dark:text-neutral-300;
+  }
+
+  .background-3 {
+    @apply bg-slate-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300;
+  }
+
+  /* .foreground {
+    @apply bg;
+  } */
 }
 
 /**
