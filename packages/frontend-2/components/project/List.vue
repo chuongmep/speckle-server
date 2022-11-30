@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="pb-8">
     <div class="flex items-center justify-between gap-4 my-8">
       <div class="flex items-center gap-4">
         <h1 class="h4 text-foreground font-bold flex items-center">
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div v-if="count > 0">
-      <ProjectListItem
+      <ProjectListItem2
         v-for="project in projects.slice(0, numProjects)"
         :key="project.id"
         :project="project"

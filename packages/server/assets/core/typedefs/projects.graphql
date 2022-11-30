@@ -10,6 +10,7 @@ type Project {
   role: String!
   editedAt: DateTime!
   team: [LimitedUser!]!
+  models: [Model!]!
 }
 
 type Model {
@@ -18,4 +19,5 @@ type Model {
   versionCount: Int!
   author: LimitedUser!
   sourceApp: String!
+  previewUrl: String!
 }

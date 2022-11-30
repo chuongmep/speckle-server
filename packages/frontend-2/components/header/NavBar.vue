@@ -6,23 +6,9 @@
       class="bg-foundation shadow-md hover:shadow-lg transition fixed w-full z-10"
     >
       <div class="layout-container">
-        <div class="flex h-14 transition-all justify-between">
+        <div class="flex h-14 justify-between">
           <div class="flex">
             <HeaderLogoBlock :active="false" class="mr-1" />
-            <div class="hidden sm:flex flex-shrink-0 items-center">
-              <HeaderNavLink to="/" name="Dashboard" :separator="false" class="ml-2" />
-
-              <HeaderNavLink
-                v-for="nl in nav.filter((n) => !!n)"
-                :key="nl.to"
-                :to="nl.to"
-                :name="nl.name"
-                :separator="nl.separator"
-              />
-
-              <!-- <HeaderNavLink to="/test" name="Long Project Name" /> -->
-              <!-- <code class="text-xs">{{ nav }}</code> -->
-            </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
             <HeaderThemeToggle />

@@ -44,6 +44,11 @@ graphql(`
     modelCount
     role
     editedAt
+    models {
+      name
+      versionCount
+      previewUrl
+    }
     team {
       id
       name

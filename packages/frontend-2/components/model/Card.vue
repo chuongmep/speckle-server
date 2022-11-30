@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable-next-line vuejs-accessibility/mouse-events-have-key-events -->
   <div
-    class="group bg-foundation hover:bg-primary rounded-xl shadow hover:shadow-xl hover:scale-[1.02] transition-all hover:cursor-pointer"
+    class="group bg-foundation hover:bg-primary rounded-xl shadow hover:shadow-xl hover:scale-[1.04] transition-all hover:cursor-pointer dark:ring-2 dark:ring-foundation-2"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
   >
@@ -22,7 +22,7 @@
             <DisclosureButton
               class="text-foreground-2 group-hover:text-white flex items-center rounded-xl transition-colors hover:bg-primary-lighter p-2 text-center"
             >
-              <div class="caption">{{ model.numVersions }}</div>
+              <div class="caption">{{ model.versionCount }}</div>
               <ClockIcon class="w-3 h-3 ml-1" />
               <EllipsisVerticalIcon v-if="!open" class="w-4 h-4" />
               <XMarkIcon v-else class="w-4 h-4" />
@@ -113,7 +113,7 @@ type Model = {
   name: string
   previewUrl: string
   preview360Url?: string
-  numVersions: number
+  versionCount: number
 }
 
 defineProps({

@@ -136,7 +136,13 @@ function buildMocksConfig(): { mocks: boolean | IMocks; mockEntireSchema: boolea
   const roles = Object.values(Roles.Stream)
   const isDebugEnv = isDevEnv() || isTestEnv()
   if (!isDebugEnv) return { mocks: false, mockEntireSchema: false } // we def don't want this on in prod
-
+  const previewUrls = [
+    'https://latest.speckle.dev/preview/7d051a6449/commits/810f4e1bec',
+    'https://latest.speckle.dev/preview/7d051a6449/commits/270741bd70',
+    'https://latest.speckle.dev/preview/499056027e/commits/00f3a58cb6',
+    'https://latest.speckle.dev/preview/499056027e/commits/0bd399bdf8',
+    'https://latest.speckle.dev/preview/28dd9ad7ba/commits/a819e40ce4'
+  ]
   return {
     mocks: {
       Query: () => ({
@@ -156,13 +162,20 @@ function buildMocksConfig(): { mocks: boolean | IMocks; mockEntireSchema: boolea
           faker.commerce.product() +
           ' ' +
           faker.commerce.product(),
-        modelCount: faker.datatype.number({ min: 0, max: 100 }),
+        modelCount: faker.datatype.number({ min: 0, max: 4 }),
+        models: () => [...new Array(faker.datatype.number({ min: 3, max: 12 }))],
         role: roles[
           faker.datatype.number({
             min: 0,
             max: roles.length - 1
           })
         ]
+      }),
+      Model: () => ({
+        name:
+          faker.commerce.productAdjective() + ' ' + faker.commerce.productMaterial(),
+        versionCount: faker.datatype.number({ min: 0, max: 100 }),
+        previewUrl: faker.helpers.arrayElement(previewUrls)
       })
     },
     mockEntireSchema: false
