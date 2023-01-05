@@ -29,6 +29,10 @@ onMounted(async () => {
   viewer.resize()
   viewer.cameraHandler.onWindowResize()
   await viewer.loadObject(
+    //'https://latest.speckle.dev/streams/b5cc4e967c/objects/b2d6668e1b1194e45d8bf4d638e61554'
+    // 'https://latest.speckle.dev/streams/b5cc4e967c/objects/6d1be6614c268d3a4a4b3b349486fda3'
+    // 'https://latest.speckle.dev/streams/83306dd91a/objects/8a04e7d17bd588d43c1bb336db639951'
+    // 'https://latest.speckle.dev/streams/b5cc4e967c/objects/71ee1c07d9a1140b29c3f38df3f5fd1c'
     'https://latest.speckle.dev/streams/b5cc4e967c/objects/b2d6668e1b1194e45d8bf4d638e61554'
   )
 })
