@@ -1799,6 +1799,7 @@ export type UserFavoriteStreamsArgs = {
  */
 export type UserProjectsArgs = {
   cursor?: InputMaybe<Scalars['String']>;
+  filter?: InputMaybe<UserProjectsFilter>;
   limit?: Scalars['Int'];
 };
 
@@ -1826,6 +1827,11 @@ export type UserTimelineArgs = {
 
 export type UserDeleteInput = {
   email?: InputMaybe<Scalars['String']>;
+};
+
+export type UserProjectsFilter = {
+  /** Filter out projects by name */
+  search?: InputMaybe<Scalars['String']>;
 };
 
 export type UserRoleInput = {
@@ -2085,6 +2091,7 @@ export type ResolversTypes = {
   TestItem: ResolverTypeWrapper<TestItem>;
   User: ResolverTypeWrapper<Omit<User, 'commits' | 'favoriteStreams' | 'projects' | 'streams'> & { commits?: Maybe<ResolversTypes['CommitCollection']>, favoriteStreams: ResolversTypes['StreamCollection'], projects: ResolversTypes['ProjectCollection'], streams: ResolversTypes['StreamCollection'] }>;
   UserDeleteInput: UserDeleteInput;
+  UserProjectsFilter: UserProjectsFilter;
   UserRoleInput: UserRoleInput;
   UserSearchResultCollection: ResolverTypeWrapper<Omit<UserSearchResultCollection, 'items'> & { items?: Maybe<Array<Maybe<ResolversTypes['LimitedUser']>>> }>;
   UserUpdateInput: UserUpdateInput;
@@ -2187,6 +2194,7 @@ export type ResolversParentTypes = {
   TestItem: TestItem;
   User: Omit<User, 'commits' | 'favoriteStreams' | 'projects' | 'streams'> & { commits?: Maybe<ResolversParentTypes['CommitCollection']>, favoriteStreams: ResolversParentTypes['StreamCollection'], projects: ResolversParentTypes['ProjectCollection'], streams: ResolversParentTypes['StreamCollection'] };
   UserDeleteInput: UserDeleteInput;
+  UserProjectsFilter: UserProjectsFilter;
   UserRoleInput: UserRoleInput;
   UserSearchResultCollection: Omit<UserSearchResultCollection, 'items'> & { items?: Maybe<Array<Maybe<ResolversParentTypes['LimitedUser']>>> };
   UserUpdateInput: UserUpdateInput;

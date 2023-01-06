@@ -1792,6 +1792,7 @@ export type UserFavoriteStreamsArgs = {
  */
 export type UserProjectsArgs = {
   cursor?: InputMaybe<Scalars['String']>;
+  filter?: InputMaybe<UserProjectsFilter>;
   limit?: Scalars['Int'];
 };
 
@@ -1819,6 +1820,11 @@ export type UserTimelineArgs = {
 
 export type UserDeleteInput = {
   email?: InputMaybe<Scalars['String']>;
+};
+
+export type UserProjectsFilter = {
+  /** Filter out projects by name */
+  search?: InputMaybe<Scalars['String']>;
 };
 
 export type UserRoleInput = {
